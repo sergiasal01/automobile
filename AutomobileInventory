@@ -1,0 +1,65 @@
+package com.inventory;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class AutomobileInventory {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Create an Automobile object using the parameterized constructor
+        Automobile auto = new Automobile("Toyota", "Camry", "Blue", 2020, 5000);
+        System.out.println("Vehicle created using parameterized constructor.");
+
+        // List the vehicle information
+        String[] vehicleInfo = auto.listVehicleInfo();
+        System.out.println("Listing vehicle information:");
+        for (String info : vehicleInfo) {
+            System.out.println(info);
+        }
+
+        // Remove the vehicle
+        System.out.println(auto.removeVehicle());
+
+        // Add a new vehicle
+        System.out.println("Adding a new vehicle.");
+        auto.addVehicle("Honda", "Civic", "Red", 2022, 2000);
+
+        // List the new vehicle information
+        System.out.println("Listing new vehicle information:");
+        vehicleInfo = auto.listVehicleInfo();
+        for (String info : vehicleInfo) {
+            System.out.println(info);
+        }
+
+        // Update the vehicle
+        System.out.println(auto.updateVehicle("Ford", "Mustang", "Black", 2021, 1500));
+
+        // List the updated vehicle information
+        System.out.println("Listing updated vehicle information:");
+        vehicleInfo = auto.listVehicleInfo();
+        for (String info : vehicleInfo) {
+            System.out.println(info);
+        }
+
+        // Ask the user if they want to print the information to a file
+        System.out.println("Do you want to print the vehicle information to a file? (Y/N)");
+        String response = scanner.nextLine();
+
+        if (response.equalsIgnoreCase("Y")) {
+            try (FileWriter writer = new FileWriter("C:\\Temp\\Autos.txt")) {
+                for (String info : vehicleInfo) {
+                    writer.write(info + "\n");
+                }
+                System.out.println("Vehicle information written to file.");
+            } catch (IOException e) {
+                System.out.println("Error writing to file: " + e.getMessage());
+            }
+        } else {
+            System.out.println("File will not be printed.");
+        }
+
+        scanner.close();
+    }
+}
