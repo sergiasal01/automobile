@@ -1,0 +1,88 @@
+package com.inventory;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class Automobile {
+    // Private attributes
+    private String make;
+    private String model;
+    private String color;
+    private int year;
+    private int mileage;
+
+    // Default constructor
+    public Automobile() {
+        this.make = "Unknown";
+        this.model = "Unknown";
+        this.color = "Unknown";
+        this.year = 0;
+        this.mileage = 0;
+    }
+
+    // Parameterized constructor
+    public Automobile(String make, String model, String color, int year, int mileage) {
+        this.make = make;
+        this.model = model;
+        this.color = color;
+        this.year = year;
+        this.mileage = mileage;
+    }
+
+    // Method to add a new vehicle
+    public void addVehicle(String make, String model, String color, int year, int mileage) {
+        try {
+            this.make = make;
+            this.model = model;
+            this.color = color;
+            this.year = year;
+            this.mileage = mileage;
+            System.out.println("Vehicle added successfully!");
+        } catch (Exception e) {
+            System.out.println("Error adding vehicle: " + e.getMessage());
+        }
+    }
+
+    // Method to list vehicle information
+    public String[] listVehicleInfo() {
+        String[] vehicleInfo = new String[5];
+        try {
+            vehicleInfo[0] = "Make: " + this.make;
+            vehicleInfo[1] = "Model: " + this.model;
+            vehicleInfo[2] = "Color: " + this.color;
+            vehicleInfo[3] = "Year: " + this.year;
+            vehicleInfo[4] = "Mileage: " + this.mileage;
+        } catch (Exception e) {
+            System.out.println("Error listing vehicle: " + e.getMessage());
+        }
+        return vehicleInfo;
+    }
+
+    // Method to remove a vehicle
+    public String removeVehicle() {
+        try {
+            this.make = "Unknown";
+            this.model = "Unknown";
+            this.color = "Unknown";
+            this.year = 0;
+            this.mileage = 0;
+            return "Vehicle removed successfully!";
+        } catch (Exception e) {
+            return "Error removing vehicle: " + e.getMessage();
+        }
+    }
+
+    // Method to update vehicle attributes
+    public String updateVehicle(String make, String model, String color, int year, int mileage) {
+        try {
+            this.make = make;
+            this.model = model;
+            this.color = color;
+            this.year = year;
+            this.mileage = mileage;
+            return "Vehicle updated successfully!";
+        } catch (Exception e) {
+            return "Error updating vehicle: " + e.getMessage();
+        }
+    }
+}
